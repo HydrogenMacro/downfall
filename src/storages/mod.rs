@@ -1,8 +1,10 @@
 mod spatial_hash;
 
+use std::hash::Hash;
 use num::Integer;
-use crate::physical_aabb::PhysicalAABB;
+pub use crate::body::Body;
+pub use spatial_hash::*;
 
-pub trait Storage<IntType: Integer + 'static> {
-	fn get_surrounding_aabbs(&self, rect: PhysicalAABB<IntType>) -> impl Iterator<Item=&PhysicalAABB<IntType>>;
+pub trait Storage {
+	fn get_surrounding_aabbs(&self, rect: Body) -> impl Iterator<Item=&Body>;
 }
